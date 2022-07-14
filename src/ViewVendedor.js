@@ -14,8 +14,9 @@ class ViewVendedor extends React.Component{
 
     componentDidMount() {
         const usuario = authenticationService.getActualUser();
+        const username = usuario.username;
         this.setState({
-            usuario: usuario
+            usuario: username
         })
         this.viewProductsByVendedor();
     }
@@ -50,7 +51,9 @@ class ViewVendedor extends React.Component{
     render() {
         return (
           <div>
-            <h3>{this.setState.usuario}</h3>
+            <div>
+              <h3>{this.state.usuario}</h3>
+            </div>
             <Button>Crear Producto</Button>
             <div>
               <table>
