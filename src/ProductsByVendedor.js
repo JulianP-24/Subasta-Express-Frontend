@@ -30,7 +30,7 @@ class ProductsByVendedor extends React.Component{
         }
     }
 
-    rende() {
+    render() {
         return (
           <div>
             <strong>Vendedor: {this.state.vendedor}</strong>

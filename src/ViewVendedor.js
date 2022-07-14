@@ -2,6 +2,7 @@ import React from "react";
 import productService from "./services/productService";
 import { Button } from "reactstrap";
 import authenticationService from "./services/authenticationService";
+import { Link } from "react-router-dom";
 
 class ViewVendedor extends React.Component{
     constructor(props) {
@@ -39,9 +40,15 @@ class ViewVendedor extends React.Component{
                     <td>{products.productName}</td>
                     <td>{products.precio}</td>
 
-                    <td><Button>Eliminar</Button></td>
-                    <td><Button>Editar</Button></td>
-                    <td><Button>Subastar</Button></td>
+                    <td>
+                      <Button>Eliminar</Button>
+                    </td>
+                    <td>
+                      <Button>Editar</Button>
+                    </td>
+                    <td>
+                      <Link>Subastar</Link>
+                    </td>
                   </tr>
                 );
             })
