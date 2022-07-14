@@ -4,19 +4,22 @@ import './Login.css';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import React from 'react';
 import Login from './Login';
-import Dashboard from './Dashboard';
+import Profile from './Profile';
 import SignUp from './SignUp';
+import ViewComprador from './ViewComprador';
 import authenticationService from './services/authenticationService';
+import ProductsByVendedor from './ProductsByVendedor';
 
 
 export class App extends React.Component {
   constructor(props) {
     super(props)
+    this.handleLogOut = this.handleLogOut.bind(this);
     this.state = {
       viewComprador: false,
       viewVendedor: false,
       actualUser: undefined
-    }
+    };
   }
 
   componentDidMount() {
@@ -30,25 +33,73 @@ export class App extends React.Component {
     }
   }
 
+  handleLogOut() {
+    authenticationService.logOut();
+    alert("Sesion cerrada exitosamente");
+  }
+
   render() {
     const { actualUser, viewComprador, viewVendedor } = this.state;
     return (
       <BrowserRouter>
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <div className="navbar-nav">
-              <li className="nav-item">
-                <Link to={"/signup"} className="nav-link">
-                  Registrate
+            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li className="nav-item active">
+                <Link className="nav-link" to={"/productos"}>
+                  Productos
                 </Link>
               </li>
-            </div>
+              {viewVendedor && (
+                <li className="nav-item">
+                  <Link to={"/vendedor"} className="nav-link">
+                    vistaVendedor
+                  </Link>
+                </li>
+              )}
+              {viewComprador && (
+                <li className="nav-item">
+                  <Link to={"/comprador"} className="nav-link">
+                    vistaComprador
+                  </Link>
+                </li>
+              )}
+            </ul>
+            {actualUser ? (
+              <div className="navbar-nav float-right">
+                <li className="nav-item">
+                  <Link to={"/profile"} className="nav-link">
+                    {actualUser.username}
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link
+                    to={"/"}
+                    className="nav-link"
+                    onClick={this.handleLogOut}
+                  >
+                    LogOut
+                  </Link>
+                </li>
+              </div>
+            ) : (
+              <div className="navbar-nav">
+                <li className="nav-item">
+                  <Link to={"/signup"} className="nav-link">
+                    Registrate
+                  </Link>
+                </li>
+              </div>
+            )}
           </div>
         </nav>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/signUp" element={<SignUp />} />
+          <Route path="/comprador" element={<ViewComprador />} />
+          <Route path="/productsbyVendedor" element={<ProductsByVendedor />} />
         </Routes>
       </BrowserRouter>
     );

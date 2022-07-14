@@ -24,6 +24,10 @@ class authenticationService {
         });
     }
 
+    logOut() {
+        localStorage.removeItem("user"); 
+    }
+
     getActualUser() {
         return JSON.parse(localStorage.getItem('user'));
     }

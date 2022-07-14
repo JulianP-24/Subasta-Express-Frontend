@@ -59,4 +59,4 @@ class productService{
     }
 }
 
-export default productService();
+export default productService;
