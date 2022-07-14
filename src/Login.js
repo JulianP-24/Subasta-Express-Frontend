@@ -2,6 +2,8 @@ import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import Logo from './Logo.png';
 import authenticationService from './services/authenticationService'
+import { Link } from "react-router-dom";
+
 
 
 class Login extends React.Component{
@@ -40,8 +42,8 @@ class Login extends React.Component{
 
         authenticationService.login(this.state.username).then(
             () => {
-                this.props.history.push("/dashboard");
-                window.location.reload();
+                //this.props.history.push("/dashboard");
+                window.location = '/profile';
                 alert("Inicio de sesion exitoso");
             },
             error => {

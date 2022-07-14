@@ -8,8 +8,6 @@ class viewComprador extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            busqueda: "",
-            contenido: "",
             ususario: ""
         };
         this.productService = new productService();
@@ -18,6 +16,10 @@ class viewComprador extends React.Component{
     }
 
     componentDidMount() {
+        const usuario = authenticationService.getActualUser();
+        this.setState({
+            usuario: usuario
+        })
         this.getAllVendedores();
     }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import authenticationService from "./services/authenticationService";
 import './SignUp.css';
+import { Link } from "react-router-dom";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -75,8 +76,8 @@ class SignUp extends React.Component {
             this.state.email,
             this.state.roles
         ).then(() => {
-            this.props.history.push("/");
-            window.location.reload();
+            //this.props.history.push("/");
+            window.location = '/';
             alert("Registro Exitoso");
         },
             error => {

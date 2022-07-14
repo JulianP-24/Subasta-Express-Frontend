@@ -9,6 +9,7 @@ import SignUp from './SignUp';
 import ViewComprador from './ViewComprador';
 import authenticationService from './services/authenticationService';
 import ProductsByVendedor from './ProductsByVendedor';
+import ViewVendedor from './ViewVendedor';
 
 
 export class App extends React.Component {
@@ -35,6 +36,7 @@ export class App extends React.Component {
 
   handleLogOut() {
     authenticationService.logOut();
+    window.location = '/';
     alert("Sesion cerrada exitosamente");
   }
 
@@ -100,6 +102,7 @@ export class App extends React.Component {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/comprador" element={<ViewComprador />} />
           <Route path="/productsbyVendedor" element={<ProductsByVendedor />} />
+          <Route path="/vendedor" element={<ViewVendedor />} />
         </Routes>
       </BrowserRouter>
     );
