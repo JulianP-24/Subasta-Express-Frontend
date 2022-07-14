@@ -18,7 +18,7 @@ class ProductsByVendedor extends React.Component{
 
     viewProducts() {
         if (this.state.productos) {
-            return this.state.products.map((product) => {
+            return this.state.productos.map((product) => {
                 return (
                   <tr key={product.id}>
                     <td>{product.descripcion}</td>
