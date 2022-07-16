@@ -17,16 +17,25 @@ class ListProducts extends React.Component {
   }
 
   componentDidMount() {
-    this.viewProducts();
     const usuario = authenticationService.getActualUser();
     if (usuario) {
       this.setState({
         comprador: usuario.roles.includes("Comprador"),
       });
     }
+    this.viewProducts();
+  }
+
+  viewProducts() {
+    this.productService.getAllProductos().then((response) => {
+      this.setState({
+        productos: response,
+      });
+    });
   }
 
   listProducts() {
+    console.log(this.state.productos);
     if (this.state.productos) {
       return this.state.productos.map((products) => {
         return (
@@ -46,24 +55,18 @@ class ListProducts extends React.Component {
     }
   }
 
-  viewProducts() {
-      this.productService.getAllProductos().then((response) => {
-      this.setState({
-        productos: response,
-      });
-    });
-  }
-
   viewProductsByName(name) {
     if (name != null && name !== " ") {
-      this.productService.getProductosByName(name)
+      this.productService
+        .getProductosByName(name)
         .then((response) => console.log(response));
     }
   }
 
   viewProductsByPrize(prize) {
     if (this.state.precio != 0) {
-      this.productService.getProductsByPrize(prize)
+      this.productService
+        .getProductsByPrize(prize)
         .then((response) => console.log(response));
     }
   }
@@ -94,7 +97,6 @@ class ListProducts extends React.Component {
   render() {
     return (
       <div>
-        
         <div>
           <input
             onChange={this.handleOnChange}

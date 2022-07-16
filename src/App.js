@@ -11,6 +11,7 @@ import authenticationService from './services/authenticationService';
 import ProductsByVendedor from './ProductsByVendedor';
 import ViewVendedor from './ViewVendedor';
 import ListProducts from './ListProducts';
+import AgregarProducto from './AgregarProducto';
 
 
 export class App extends React.Component {
@@ -105,6 +106,7 @@ export class App extends React.Component {
           <Route path="/productsbyVendedor" element={<ProductsByVendedor />} />
           <Route path="/vendedor" element={<ViewVendedor />} />
           <Route path="/productos" element={<ListProducts />} />
+          <Route path="/agregar" element={<AgregarProducto />} />
         </Routes>
       </BrowserRouter>
     );

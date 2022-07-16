@@ -24,8 +24,8 @@ class viewComprador extends React.Component{
     }
 
     handleOnChange(evt) {
-        const target = evt.target;
-        const value = target.value;
+        const value = evt.target.value;
+       // const value = target.value;
         this.setState({
             vendedor: value
         })
@@ -59,13 +59,14 @@ class viewComprador extends React.Component{
     }
 
     viewVendedor() {
+        console.log(this.state.vendedores);
         if (this.state.vendedores) {
             return this.state.vendedores.map((vendedor) => {
                 return (
                     <tr key={vendedor.id}>
-                        <td>{vendedor.nombre}</td>
+                        <td>{vendedor.name}</td>
                         <td>{vendedor.email}</td>
-                        <td><Link to={{pathname: "/productsbyVendedor", search:vendedor.nombre, state: {vendedor: vendedor}}}>Ver Productos</Link></td>
+                        <td><Link to={{pathname: "/productsbyVendedor", search:vendedor.name, state: {vendedor: vendedor}}}>Ver Productos</Link></td>
                     </tr>
                 )
             })

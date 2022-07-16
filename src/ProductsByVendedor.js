@@ -11,12 +11,12 @@ class ProductsByVendedor extends React.Component{
 
     componentDidMount() {
         this.setState({
-            productos: this.props.location.state.vendedor.productos,
-            vendedor: this.props.location.state.vendedor.name
+            productos: this.props.state.vendedor.productos,
+            vendedor: this.props.state.vendedor.name
         })
     }
 
-    viewProducts() {
+  viewProducts() {
         if (this.state.productos) {
             return this.state.productos.map((product) => {
                 return (

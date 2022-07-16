@@ -1,7 +1,7 @@
 import axios from "axios";
 import authenticationService from "./authenticationService";
 
-const url = "htpp://localhost:8080"
+const url = "http://localhost:8080"
 class productService{
     getAllProductos() {
         axios.get(url + '/Comprador/productos')
@@ -9,7 +9,7 @@ class productService{
     }
 
     getProductsById(id) {
-        axios.get(url + '/Comprador/productos/' + id)
+        axios.get(url + '/Vendedor/productos/' + id)
             .then(response => response.data);
     }
 
@@ -26,36 +26,38 @@ class productService{
     getCompradorByName() {
         const usuario = authenticationService.getActualUser();
         const name = usuario.name;
-        return axios.get(url + '/Comprador/' + name)
+        return axios.get(url + '/Comprador/comprador' + name)
             .then(response => response.data);
     }
 
     getVendedorByName() {
         const usuario = authenticationService.getActualUser();
         const name = usuario.name;
-        return axios.get(url + '/Vendedor/' + name)
+        return axios.get(url + '/Vendedor/vendedor/' + name)
             .then(response => response.data);
     }
 
-    saveProduct(producto) {
-        if (producto.id) {
-            return axios.put(url + '/Vendedor/productos/' + producto.id, producto)
-                .then(response => console.log(response.data));
-        } else {
+
+    saveProduct(productName, descripcion, precio) {
             let vendedor;
             const usuario = authenticationService.getActualUser();
             const name = usuario.name;
-            axios.get(url + '/Vendedor/' + name)
+            axios.get(url + '/Vendedor/vendedor/' + name)
                 .then(response => {
                     vendedor = response.data.id
-                    axios.post(url + '/Vendedor/productos/' + vendedor, producto)
+                    axios.post(url + '/Vendedor/productos/' + vendedor, {
+                        productName,
+                        descripcion,
+                        precio
+                    })
+                    
             })
         }
-    }
+    
 
     deleteProduct(id) {
         axios.delete(url + '/Vendedor/productos/' + id)
-            .then(response => console.log("Se elimino correctamente", response.data));
+            .then(response => response.data);
     }
 }
 

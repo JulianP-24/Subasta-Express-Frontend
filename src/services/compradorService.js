@@ -8,8 +8,8 @@ class compradorService {
             .then(response => response.data);
     }
 
-    getVendedoresByName(name) {
-        return axios.get(url + '/Vendedor/vendedor' + name)
+    async getVendedoresByName(name) {
+        return await axios.get(url + '/Vendedor/vendedor/' + name)
             .then(response => response.data);
     }
 }
