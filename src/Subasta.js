@@ -44,7 +44,7 @@ function Subasta() {
 
   function HandleOnStartSubasta() {
     const { product } = useParams();
-    var socket = new SockJS("http://localhost:8080/stompendpoint");
+    var socket = new SockJS("https://subasta-express-arsw.herokuapp.com/stompendpoint");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, (frame) => {
       console.log("Connected: " + frame);
