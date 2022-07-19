@@ -89,7 +89,7 @@ function Subasta() {
     const usuario = authenticationService.getActualUser();
     const username = usuario.username;
     const { precio } = useParams();
-    console.log(precio);
+    alert(precio);
     setUsername(username);
     setComprador(usuario.roles.includes("Comprador"));
     setVendedor(usuario.roles.includes("Vendedor"));
