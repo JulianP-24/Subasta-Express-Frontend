@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let url = "https://subasta-express.herokuapp.com";
+let url = "https://subasta-express-arsw.herokuapp.com";
 
 class compradorService {
     getAllVendedores() {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import authenticationService from "./authenticationService";
 
-const url = "https://subasta-express.herokuapp.com";
+const url = "https://subasta-express-arsw.herokuapp.com";
 class productService{
     getAllProductos() {
         return axios.get(url + '/Comprador/productos')

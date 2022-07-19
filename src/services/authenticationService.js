@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let url = "https://subasta-express.herokuapp.com/SubastaExpress";
+let url = "https://subasta-express-arsw.herokuapp.com/SubastaExpress";
 
 class authenticationService {
     
