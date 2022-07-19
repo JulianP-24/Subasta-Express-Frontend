@@ -1,25 +1,25 @@
 import axios from "axios";
 import authenticationService from "./authenticationService";
 
-const url = "http://localhost:8080"
+const url = "https://subasta-express.herokuapp.com";
 class productService{
     getAllProductos() {
-        axios.get(url + '/Comprador/productos')
+        return axios.get(url + '/Comprador/productos')
             .then(response => response.data);
     }
 
     getProductsById(id) {
-        axios.get(url + '/Vendedor/productos/' + id)
+        return axios.get(url + '/Vendedor/productos/' + id)
             .then(response => response.data);
     }
 
     getProductosByName(name) {
-        axios.get(url + '/Comprador/productos/listar/' + name)
+        return axios.get(url + '/Comprador/productos/listar/' + name)
             .then(response => response.data);
     }
 
     getProductsByPrize(prize) {
-        axios.get(url + '/Comprador/productos/buscar/' + prize)
+        return axios.get(url + '/Comprador/productos/buscar/' + prize)
             .then(response => response.data);
     }
 

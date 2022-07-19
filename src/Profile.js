@@ -10,12 +10,11 @@ class Profile extends React.Component{
             actualUser: authenticationService.getActualUser(),
             comprador: false,
             vendedor: false,
-            usuario: ""
         }
     }
 
     componentDidMount() {
-        this.setState({
+        this.setState({ 
             comprador: this.state.actualUser.roles.includes("Comprador"),
             vendedor: this.state.actualUser.roles.includes("Vendedor")
         })
@@ -32,7 +31,6 @@ class Profile extends React.Component{
                     <strong>{actualUser.username} Perfil Vendedor</strong>
                 </h3>)}
             </header>
-            
             <strong>email: {actualUser.email} </strong>
           </div>  
         );

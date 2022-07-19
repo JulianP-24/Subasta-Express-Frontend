@@ -51,12 +51,24 @@ class ViewVendedor extends React.Component {
             <td>{productos.precio}</td>
 
             <td>
-              <Button onClick={() => this.remove(productos.id)}>Eliminar</Button>
+              <Button onClick={() => this.remove(productos.id)}>
+                Eliminar
+              </Button>
             </td>
             <td>
               <Button>Editar</Button>
             </td>
-            <td>Subastar</td>
+            <td>
+              <button>
+                <Link
+                  to={{
+                    pathname: `/subasta/${productos.productName}/${productos.precio}`,
+                  }}
+                >
+                  Subastar
+                </Link>
+              </button>
+            </td>
           </tr>
         );
       });

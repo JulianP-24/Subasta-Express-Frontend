@@ -12,6 +12,7 @@ import ProductsByVendedor from './ProductsByVendedor';
 import ViewVendedor from './ViewVendedor';
 import ListProducts from './ListProducts';
 import AgregarProducto from './AgregarProducto';
+import Subasta from './Subasta';
 
 
 export class App extends React.Component {
@@ -107,6 +108,7 @@ export class App extends React.Component {
           <Route path="/vendedor" element={<ViewVendedor />} />
           <Route path="/productos" element={<ListProducts />} />
           <Route path="/agregar" element={<AgregarProducto />} />
+          <Route path="/subasta/:producto/:precio" element={<Subasta />} />
         </Routes>
       </BrowserRouter>
     );

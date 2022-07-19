@@ -1,3 +1,4 @@
+import { Button } from "bootstrap";
 import React from "react";
 import { Link } from "react-router-dom";
 import authenticationService from "./services/authenticationService";
@@ -10,6 +11,7 @@ class ListProducts extends React.Component {
       buscar: "",
       comprador: "",
       precio: 0,
+      products: []
     };
     this.productService = new productService();
     this.handleOnChange = this.handleOnChange.bind(this);
@@ -18,6 +20,7 @@ class ListProducts extends React.Component {
 
   componentDidMount() {
     const usuario = authenticationService.getActualUser();
+    console.log(usuario);
     if (usuario) {
       this.setState({
         comprador: usuario.roles.includes("Comprador"),
@@ -27,26 +30,34 @@ class ListProducts extends React.Component {
   }
 
   viewProducts() {
-    this.productService.getAllProductos().then((response) => {
+    this.productService.getAllProductos().then(response => {
       this.setState({
-        productos: response,
+        products: response,
       });
     });
+    
   }
 
   listProducts() {
-    console.log(this.state.productos);
-    if (this.state.productos) {
-      return this.state.productos.map((products) => {
+    if (this.state.products) {
+      return this.state.products.map((products) => {
         return (
           <tr key={products.id}>
-            <td>{products.descripcion}</td>
             <td>{products.productName}</td>
+            <td>{products.descripcion}</td>
             <td>{products.precio}</td>
             <td>{products.vendedor.name}</td>
             {this.state.comprador && (
               <td>
-                <Link>{products.precio}</Link>Entar
+                <button>
+                  <Link
+                    to={{
+                      pathname: `/subasta/${products.productName}/${products.precio}`,
+                    }}
+                  >
+                    Entrar
+                  </Link>
+                </button>
               </td>
             )}
           </tr>
