@@ -6,7 +6,12 @@ class authenticationService {
     
     login(username) {
         return axios
-          .get(url + '/login/' + username,)
+          .get(url + "/login/" + username, {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            }
+          })
           .then((response) => {
             localStorage.setItem("user", JSON.stringify(response.data));
             console.log(response.data);
