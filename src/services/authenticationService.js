@@ -20,6 +20,10 @@ class authenticationService {
 
     signUp(username, password, name, surname, email, roles) {
         return axios.post(url + '/signUp', {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            },
             username,
             password,
             name,
