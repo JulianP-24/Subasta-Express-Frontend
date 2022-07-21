@@ -37,8 +37,8 @@ class AgregarProducto extends React.Component {
     handleOnSubmit(evt) {
         evt.preventDefault();
         this.productService.saveProduct(this.state.productName, this.state.descripcion, this.state.precio)
-        window.location = '/vendedor';
-        alert("Se agrego correctamente el producto");      
+        alert("Se agrego correctamente el producto");
+        window.location = '/vendedor';     
     }
 
     render() {

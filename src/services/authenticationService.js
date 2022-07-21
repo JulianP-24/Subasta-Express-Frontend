@@ -1,6 +1,7 @@
 import axios from "axios";
 
-let url = "https://subasta-express-arsw.herokuapp.com/SubastaExpress";
+//let url = "https://subasta-express-arsw.herokuapp.com/SubastaExpress";
+const url = "http://localhost:8080/SubastaExpress";
 
 class authenticationService {
     
@@ -13,7 +14,7 @@ class authenticationService {
             }
           })
           .then((response) => {
-            localStorage.setItem("user", JSON.stringify(response.data));
+            sessionStorage.setItem("user", JSON.stringify(response.data));
             console.log(response.data);
           });
     }
@@ -34,11 +35,11 @@ class authenticationService {
     }
 
     logOut() {
-        localStorage.removeItem("user"); 
+        sessionStorage.removeItem("user"); 
     }
 
     getActualUser() {
-        return JSON.parse(localStorage.getItem('user'));
+        return JSON.parse(sessionStorage.getItem('user'));
     }
 
 }

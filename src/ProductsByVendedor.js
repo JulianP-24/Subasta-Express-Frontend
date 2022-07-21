@@ -1,24 +1,30 @@
-import React from "react";
+import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import productService from "./services/productService";
 
-class ProductsByVendedor extends React.Component{
-    constructor(props) {
-        super(props)
-        this.state = {
-            productos: [],
-            vendedor: ""
-        }
-    }
+function ProductsByVendedor() {
+  const [productos, setProductos] = useState([]);
+  const [vendedorr, setVendedor] = useState("");
+  const [vendedorId, setVendedorId] = useState("");
+  const { id } = useParams();
+  const { vendedor } = useParams();
 
-    componentDidMount() {
-        this.setState({
-            productos: this.props.state.vendedor.productos,
-            vendedor: this.props.state.vendedor.name
-        })
-    }
+  useEffect(() => {
+    setInitialValues();
+  })
 
-  viewProducts() {
-        if (this.state.productos) {
-            return this.state.productos.map((product) => {
+  function setInitialValues() {
+    //productService.getProductsById(id).then((response) => {
+      //alert(response);
+    //});
+    setVendedor(vendedor);
+    setVendedorId(id);
+    setProductos(vendedor.productos);
+  }
+
+  function viewProducts() {
+        if (productos) {
+            return productos.map((product) => {
                 return (
                   <tr key={product.id}>
                     <td>{product.descripcion}</td>
@@ -30,10 +36,10 @@ class ProductsByVendedor extends React.Component{
         }
     }
 
-    render() {
+    
         return (
           <div>
-            <strong>Vendedor: {this.state.vendedor}</strong>
+            <strong>Vendedor: {vendedorr}</strong>
             <table>
               <thead >
                 <tr>
@@ -42,11 +48,11 @@ class ProductsByVendedor extends React.Component{
                   <th>Precio</th>
                 </tr>
               </thead>
-              <tbody>{this.viewProducts()}</tbody>
+              <tbody>{viewProducts()}</tbody>
             </table>
           </div>
         );
-    }
-}
+  }
+
 
 export default ProductsByVendedor;

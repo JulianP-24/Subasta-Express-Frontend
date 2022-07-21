@@ -63,12 +63,20 @@ class viewComprador extends React.Component{
         if (this.state.vendedores) {
             return this.state.vendedores.map((vendedor) => {
                 return (
-                    <tr key={vendedor.id}>
-                        <td>{vendedor.name}</td>
-                        <td>{vendedor.email}</td>
-                        <td><Link to={{pathname: "/productsbyVendedor", search:vendedor.name, state: {vendedor: vendedor}}}>Ver Productos</Link></td>
-                    </tr>
-                )
+                  <tr key={vendedor.id}>
+                    <td>{vendedor.name}</td>
+                    <td>{vendedor.email}</td>
+                    <td>
+                      <Link
+                        to={{
+                          pathname: `/productsbyVendedor/${vendedor.id}/${vendedor.name}`,
+                        }}
+                      >
+                        Ver Productos
+                      </Link>
+                    </td>
+                  </tr>
+                );
             })
         }
     }

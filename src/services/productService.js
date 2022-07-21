@@ -1,8 +1,8 @@
 import axios from "axios";
 import authenticationService from "./authenticationService";
 
-const url = "https://subasta-express-arsw.herokuapp.com";
-//const url = "http://localhost:8080";
+//const url = "https://subasta-express-arsw.herokuapp.com";
+const url = "http://localhost:8080";
 class productService{
     getAllProductos() {
         return axios.get(url + '/Comprador/productos')
@@ -43,10 +43,10 @@ class productService{
             let vendedor;
             const usuario = authenticationService.getActualUser();
             const name = usuario.name;
-            axios.get(url + '/Vendedor/vendedor/' + name)
+            return axios.get(url + '/Vendedor/vendedor/' + name)
                 .then(response => {
                     vendedor = response.data.id
-                    axios.post(url + '/Vendedor/productos/' + vendedor, {
+                    return axios.post(url + '/Vendedor/productos/' + vendedor, {
                         productName,
                         descripcion,
                         precio
