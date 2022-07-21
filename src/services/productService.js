@@ -38,6 +38,11 @@ class productService{
             .then(response => response.data);
     }
 
+    getVendedorByName(name) {
+        return axios.get(url + '/Vendedor/vendedor/' + name)
+            .then(response => response.data);
+    }
+
 
     saveProduct(productName, descripcion, precio) {
             let vendedor;
@@ -62,4 +67,4 @@ class productService{
     }
 }
 
-export default productService;
+export default new productService();

@@ -11,7 +11,7 @@ class ViewVendedor extends React.Component {
       usuario: "",
       products: [],
     };
-    this.productService = new productService();
+    //this.productService = new productService();
   }
 
   componentDidMount() {
@@ -24,7 +24,7 @@ class ViewVendedor extends React.Component {
   }
 
   viewProductsByVendedor() {
-    this.productService.getVendedorByName().then((response) => {
+    productService.getVendedorByName().then((response) => {
       this.setState({
         products: response.productos,
       });
@@ -32,7 +32,7 @@ class ViewVendedor extends React.Component {
   }
 
   remove(id) {
-    this.productService.deleteProduct(id);
+    productService.deleteProduct(id);
     let updateProducts = [...this.state.products].filter((i) => i.id != id);
     this.setState({
       products: updateProducts,

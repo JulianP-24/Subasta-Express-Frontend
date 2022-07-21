@@ -13,7 +13,7 @@ class AgregarProducto extends React.Component {
         this.handleDescripcion = this.handleDescripcion.bind(this);
         this.handlePrecio = this.handlePrecio.bind(this);
         this.handleOnSubmit = this.handleOnSubmit.bind(this)
-        this.productService = new productService();
+        //this.productService = new productService();
     }
 
     handleProductName(evt) {
@@ -36,7 +36,7 @@ class AgregarProducto extends React.Component {
 
     handleOnSubmit(evt) {
         evt.preventDefault();
-        this.productService.saveProduct(this.state.productName, this.state.descripcion, this.state.precio)
+        productService.saveProduct(this.state.productName, this.state.descripcion, this.state.precio)
         alert("Se agrego correctamente el producto");
         window.location = '/vendedor';     
     }

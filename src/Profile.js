@@ -5,7 +5,7 @@ import productService from "./services/productService";
 class Profile extends React.Component{
     constructor(props) {
         super(props)
-        this.productService = new productService();
+        //this.productService = new productService();
         this.state = {
             actualUser: authenticationService.getActualUser(),
             comprador: false,

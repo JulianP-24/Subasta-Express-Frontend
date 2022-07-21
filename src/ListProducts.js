@@ -13,7 +13,7 @@ class ListProducts extends React.Component {
       precio: 0,
       products: []
     };
-    this.productService = new productService();
+    //this.productService = new productService();
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnChangePrize = this.handleOnChangePrize.bind(this);
   }
@@ -30,7 +30,7 @@ class ListProducts extends React.Component {
   }
 
   viewProducts() {
-    this.productService.getAllProductos().then(response => {
+    productService.getAllProductos().then(response => {
       this.setState({
         products: response,
       });
@@ -68,7 +68,7 @@ class ListProducts extends React.Component {
 
   viewProductsByName(name) {
     if (name != null && name !== " ") {
-      this.productService
+      productService
         .getProductosByName(name)
         .then((response) => console.log(response));
     }
@@ -76,7 +76,7 @@ class ListProducts extends React.Component {
 
   viewProductsByPrize(prize) {
     if (this.state.precio != 0) {
-      this.productService
+      productService
         .getProductsByPrize(prize)
         .then((response) => console.log(response));
     }

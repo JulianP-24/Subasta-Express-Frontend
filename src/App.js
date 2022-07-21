@@ -104,7 +104,7 @@ export class App extends React.Component {
           <Route path="/profile" element={<Profile />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/comprador" element={<ViewComprador />} />
-          <Route path="/productsbyVendedor/:id/:vendedor" element={<ProductsByVendedor />} />
+          <Route path="/productsbyVendedor/:vendedor" element={<ProductsByVendedor />} />
           <Route path="/vendedor" element={<ViewVendedor />} />
           <Route path="/productos" element={<ListProducts />} />
           <Route path="/agregar" element={<AgregarProducto />} />

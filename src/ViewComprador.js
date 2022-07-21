@@ -10,7 +10,7 @@ class viewComprador extends React.Component{
         this.state = {
             ususario: ""
         };
-        this.productService = new productService();
+        //this.productService = new productService();
         this.compradorService = new compradorService();
         this.handleOnChange = this.handleOnChange.bind(this);
     }
@@ -69,7 +69,7 @@ class viewComprador extends React.Component{
                     <td>
                       <Link
                         to={{
-                          pathname: `/productsbyVendedor/${vendedor.id}/${vendedor.name}`,
+                          pathname: `/productsbyVendedor/${vendedor.name}`,
                         }}
                       >
                         Ver Productos

@@ -5,21 +5,17 @@ import productService from "./services/productService";
 function ProductsByVendedor() {
   const [productos, setProductos] = useState([]);
   const [vendedorr, setVendedor] = useState("");
-  const [vendedorId, setVendedorId] = useState("");
-  const { id } = useParams();
   const { vendedor } = useParams();
 
   useEffect(() => {
     setInitialValues();
-  })
+  }, [])
 
   function setInitialValues() {
-    //productService.getProductsById(id).then((response) => {
-      //alert(response);
-    //});
+    productService.getVendedorByName(vendedor).then((response) => {
+      setProductos(response.productos)
+    });
     setVendedor(vendedor);
-    setVendedorId(id);
-    setProductos(vendedor.productos);
   }
 
   function viewProducts() {
