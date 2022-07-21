@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//let url = "https://subasta-express-arsw.herokuapp.com";
-const url = "http://localhost:8080";
+let url = "https://subasta-express-arsw.herokuapp.com";
+//const url = "http://localhost:8080";
 
 class compradorService {
     getAllVendedores() {
