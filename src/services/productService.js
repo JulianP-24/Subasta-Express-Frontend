@@ -38,7 +38,7 @@ class productService{
             .then(response => response.data);
     }
 
-    getVendedorByName(name) {
+    getVendedorByNameByParam(name) {
         return axios.get(url + '/Vendedor/vendedor/' + name)
             .then(response => response.data);
     }

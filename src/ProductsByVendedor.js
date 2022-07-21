@@ -12,7 +12,7 @@ function ProductsByVendedor() {
   }, [])
 
   function setInitialValues() {
-    productService.getVendedorByName(vendedor).then((response) => {
+    productService.getVendedorByNameByParam(vendedor).then((response) => {
       setProductos(response.productos)
     });
     setVendedor(vendedor);
