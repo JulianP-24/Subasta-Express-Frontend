@@ -1,8 +1,7 @@
-import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import Logo from './Logo.png';
 import authenticationService from './services/authenticationService'
-import { Link } from "react-router-dom";
+
 
 
 
@@ -40,7 +39,7 @@ class Login extends React.Component{
             loading: true
         });
 
-        authenticationService.login(this.state.username).then(
+        authenticationService.login(this.state.username, this.state.password).then(
             () => {
                 //this.props.history.push("/dashboard");
                 window.location = '/profile';
@@ -58,7 +57,7 @@ class Login extends React.Component{
                         loading: false,
                         msg: resMessage
                     })
-                    alert("Error al iniciar sesion")
+                    alert("Error al iniciar sesion");
                 }
         )
     }

@@ -5,9 +5,9 @@ let url = "https://subasta-express-arsw.herokuapp.com/SubastaExpress";
 
 class authenticationService {
     
-    login(username) {
+    login(username, password) {
         return axios
-          .get(url + "/login/" + username, {
+          .get(url + "/login/" + username + "/" + password, {
             headers: {
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
