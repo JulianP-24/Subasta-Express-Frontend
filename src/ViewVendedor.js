@@ -5,15 +5,22 @@ import authenticationService from "./services/authenticationService";
 import { Link } from "react-router-dom";
 
 class ViewVendedor extends React.Component {
+  /**
+   * The constructor function is a special function that is called when a new instance of the class is
+   * created.
+   * @param props - The props that are passed to the component.
+   */
   constructor(props) {
     super(props);
     this.state = {
       usuario: "",
       products: [],
     };
-    //this.productService = new productService();
   }
 
+  /**
+   * ComponentDidMount() is a function that is called when the component is mounted.
+   */
   componentDidMount() {
     const usuario = authenticationService.getActualUser();
     const name = usuario.name;
@@ -23,6 +30,11 @@ class ViewVendedor extends React.Component {
     this.viewProductsByVendedor();
   }
 
+  /**
+   * "I'm calling a function that returns a promise, and when that promise resolves, I'm setting the
+   * state of my component to the response of that promise."
+   * </code>
+   */
   viewProductsByVendedor() {
     productService.getVendedorByName().then((response) => {
       this.setState({
@@ -31,16 +43,23 @@ class ViewVendedor extends React.Component {
     });
   }
 
+  /**
+   * It removes a product from the state and from the database
+   * @param id - The id of the product to be deleted
+   */
   remove(id) {
     productService.deleteProduct(id);
     let updateProducts = [...this.state.products].filter((i) => i.id != id);
     this.setState({
       products: updateProducts,
     });
-    alert("Se elimino correctamente el producto")
+    alert("Se elimino correctamente el producto");
   }
 
-
+  /**
+   * It returns a table row for each product in the state
+   * @returns the productos.map() function.
+   */
   viewProducts() {
     if (this.state.products) {
       return this.state.products.map((productos) => {
@@ -51,15 +70,18 @@ class ViewVendedor extends React.Component {
             <td>{productos.precio}</td>
 
             <td>
-              <Button onClick={() => this.remove(productos.id)}>
+              <Button
+                className="btn btn-danger btn-rounded"
+                onClick={() => this.remove(productos.id)}
+              >
                 Eliminar
               </Button>
             </td>
             <td>
-              <Button>Editar</Button>
+              <Button className="btn btn-warning btn-rounded">Editar</Button>
             </td>
             <td>
-              <button>
+              <button type="button" className="btn btn-success btn-rounded">
                 <Link
                   to={{
                     pathname: `/subasta/${productos.productName}/${productos.precio}`,
@@ -81,13 +103,17 @@ class ViewVendedor extends React.Component {
         <div>
           <h3>{this.state.usuario}</h3>
         </div>
-        <Button tag={Link} to="/agregar">
+        <Button
+          className="btn btn-primary btn-rounded"
+          tag={Link}
+          to="/agregar"
+        >
           Crear Producto
         </Button>
         <div>
-          <table>
+          <table className="table table-striped table-responsive align-middle">
             <thead>
-              <tr>
+              <tr className="table-dark">
                 <th>Descripcion</th>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -104,4 +130,4 @@ class ViewVendedor extends React.Component {
   }
 }
 
-export default ViewVendedor
+export default ViewVendedor;

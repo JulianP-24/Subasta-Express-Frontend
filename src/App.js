@@ -1,45 +1,58 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import './Login.css';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import React from 'react';
-import Login from './Login';
-import Profile from './Profile';
-import SignUp from './SignUp';
-import ViewComprador from './ViewComprador';
-import authenticationService from './services/authenticationService';
-import ProductsByVendedor from './ProductsByVendedor';
-import ViewVendedor from './ViewVendedor';
-import ListProducts from './ListProducts';
-import AgregarProducto from './AgregarProducto';
-import Subasta from './Subasta';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "./Login.css";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import React from "react";
+import Login from "./Login";
+import Profile from "./Profile";
+import SignUp from "./SignUp";
+import ViewComprador from "./ViewComprador";
+import authenticationService from "./services/authenticationService";
+import ProductsByVendedor from "./ProductsByVendedor";
+import ViewVendedor from "./ViewVendedor";
+import ListProducts from "./ListProducts";
+import AgregarProducto from "./AgregarProducto";
+import Subasta from "./Subasta";
 
-
+/* The App class is the main component of the application, it renders the navbar and the routes of the
+application */
 export class App extends React.Component {
+  /**
+   * The constructor function is a special method for creating and initializing an object created
+   * within a class.
+   * @param props - The props that are passed to the component.
+   */
   constructor(props) {
-    super(props)
+    super(props);
     this.handleLogOut = this.handleLogOut.bind(this);
     this.state = {
       viewComprador: false,
       viewVendedor: false,
-      actualUser: undefined
+      actualUser: undefined,
     };
   }
 
+  /**
+   * If the user is logged in, then set the state of the component to the user's information.
+   */
   componentDidMount() {
     const usuario = authenticationService.getActualUser();
     if (usuario) {
       this.setState({
         actualUser: usuario,
         viewComprador: usuario.roles.includes("Comprador"),
-        viewVendedor: usuario.roles.includes("Vendedor")
-      })
+        viewVendedor: usuario.roles.includes("Vendedor"),
+      });
     }
   }
 
+  /**
+   * When the user clicks the logout button, the authentication service is called to logout, the user
+   * is redirected to the home page, and an alert is displayed.
+   */
   handleLogOut() {
     authenticationService.logOut();
-    window.location = '/';
+    window.location = "/";
     alert("Sesion cerrada exitosamente");
   }
 
@@ -104,7 +117,7 @@ export class App extends React.Component {
           <Route path="/profile" element={<Profile />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/comprador" element={<ViewComprador />} />
-          <Route path="/productsbyVendedor/:vendedor" element={<ProductsByVendedor />} />
+          <Route path="/productsbyVendedor/:vendedor" element={<ProductsByVendedor />}/>
           <Route path="/vendedor" element={<ViewVendedor />} />
           <Route path="/productos" element={<ListProducts />} />
           <Route path="/agregar" element={<AgregarProducto />} />

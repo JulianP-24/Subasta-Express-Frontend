@@ -1,9 +1,14 @@
 import React from "react";
 import authenticationService from "./services/authenticationService";
-import './SignUp.css';
-import { Link } from "react-router-dom";
+import "./SignUp.css";
+
 
 class SignUp extends React.Component {
+  /**
+   * The constructor function is a special method for creating and initializing an object created
+   * within a class.
+   * @param props - The props passed to the component.
+   */
   constructor(props) {
     super(props);
     this.handleSignUp = this.handleSignUp.bind(this);
@@ -25,71 +30,108 @@ class SignUp extends React.Component {
     };
   }
 
+  /**
+   * When the user types in the input field, the value of the input field is set to the state of the
+   * username.
+   * @param evt - The event object
+   */
   manejadorUsername(evt) {
     this.setState({
       username: evt.target.value,
     });
   }
 
+  /**
+   * When the user types in the password field, the value of the password field is set to the state of
+   * the password variable.
+   * @param evt - The event object
+   */
   manejadorPassword(evt) {
     this.setState({
       password: evt.target.value,
     });
   }
 
+  /**
+   * The function manejadorName takes an event as an argument and sets the state of the name property
+   * to the value of the event target.
+   * @param evt - The event object
+   */
   manejadorName(evt) {
     this.setState({
       name: evt.target.value,
     });
   }
 
+  /**
+   * The function manejadorSurName is an event handler that takes an event as an argument and sets the
+   * state of the surname property to the value of the event target.
+   * @param evt - The event object
+   */
   manejadorSurName(evt) {
     this.setState({
       surname: evt.target.value,
     });
   }
 
+  /**
+   * When the user types in the email input, the value of the input is set to the state of the email
+   * property.
+   * @param evt - The event object
+   */
   manejadorEmail(evt) {
     this.setState({
       email: evt.target.value,
     });
   }
 
+  /**
+   * When the user changes the value of the select element, update the state of the component with the
+   * new value.
+   * @param evt - The event object
+   */
   manejadorRoles(evt) {
     this.setState({
       roles: evt.target.value,
     });
   }
 
-    handleSignUp(evt) {
-        evt.preventDefault();
-        this.setState({
-            msg: "",
-            succesful: false
-        });
-      
-        authenticationService.signUp(
-            this.state.username,
-            this.state.password,
-            this.state.name,
-            this.state.surname,
-            this.state.email,
-            this.state.roles
-        ).then(() => {
-            //this.props.history.push("/");
-            window.location = '/';
-            alert("Registro Exitoso");
+  /**
+   * It takes the data from the form and sends it to the backend.
+   * </code>
+   * @param evt - The event object.
+   */
+  handleSignUp(evt) {
+    evt.preventDefault();
+    this.setState({
+      msg: "",
+      succesful: false,
+    });
+
+    authenticationService
+      .signUp(
+        this.state.username,
+        this.state.password,
+        this.state.name,
+        this.state.surname,
+        this.state.email,
+        this.state.roles
+      )
+      .then(
+        () => {
+          //this.props.history.push("/");
+          window.location = "/";
+          alert("Registro Exitoso");
         },
-            error => {
-                this.setState({
-                    succesful: false,
-                    msg: error.toString()
-                });
-                alert("Error al registrar usuario");
-            }
-        )
-    }
-  
+        (error) => {
+          this.setState({
+            succesful: false,
+            msg: error.toString(),
+          });
+          alert("Error al registrar usuario");
+        }
+      );
+  }
 
   render() {
     return (
@@ -161,6 +203,7 @@ class SignUp extends React.Component {
                 onChange={this.manejadorUsername}
               />
             </div>
+            <br></br>
             <div className="form-group">
               <label htmlFor="exampleInputEmail1">Roles</label>
               <select name="roles" id="roles" onChange={this.manejadorRoles}>
@@ -169,6 +212,7 @@ class SignUp extends React.Component {
                 <option value="Vendedor">Vendedor</option>
               </select>
             </div>
+            <br></br>
             <div className="col-md-12 text-center mb-3">
               <button
                 type="submit"
