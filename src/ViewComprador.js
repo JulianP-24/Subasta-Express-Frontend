@@ -87,20 +87,18 @@ class viewComprador extends React.Component{
             <input
               type="text"
               id="name"
+              placeholder="Buscar Vendedor"
               onChange={this.handleOnChange}
-              placeholder="Buscar Vendedor">  
-            </input>
+            ></input>
             <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Productos</th>    
-                    </tr>        
-                </thead>
-                <tbody>
-                    {this.viewVendedor()}        
-                </tbody>    
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Productos</th>
+                </tr>
+              </thead>
+              <tbody>{this.viewVendedor()}</tbody>
             </table>
           </div>
         );

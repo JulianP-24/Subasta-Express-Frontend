@@ -26,7 +26,6 @@ function Subasta() {
   function setInitialValues() {
     const usuario = authenticationService.getActualUser();
     const username = usuario.username;
-    alert(precio);
     setUsername(username);
     setComprador(usuario.roles.includes("Comprador"));
     setVendedor(usuario.roles.includes("Vendedor"));
@@ -34,7 +33,6 @@ function Subasta() {
   }
   
     function handleOnStartSubasta() {
-      
       var socket = new SockJS("https://subasta-express-arsw.herokuapp.com/stompendpoint");
       stompClient = Stomp.over(socket);
       stompClient.connect({}, (frame) => {
@@ -44,15 +42,15 @@ function Subasta() {
             let lista = response.body.split(".");
             setEstado(lista[1]);
             if (response.body.includes("false")) {
-              alert("El ganador de la subasta es: " + ganador);
+              alert("El ganador es: " + ganador);
             }
-          } else if (response.body === precio) {
-            alert("Se mantuvo el precio");
-          } else {
-            const usuario = authenticationService.getActualUser();
-            let lista = response.body.split("-");
-            setPrecio(lista[0]);
-            setGanador(lista[1]);
+          }
+            else if (response.body === precio) {
+              alert("Se mantuvo el precio");
+            } else {
+              let lista = response.body.split("-");
+              setPrecio(lista[0]);
+              setGanador(lista[1]);
           }
         });
       });
@@ -60,7 +58,6 @@ function Subasta() {
 
   function handleOnSubmit(evt) {
     evt.preventDefault();
-    
     let mensajes = [
       mensaje,
       producto,
@@ -77,7 +74,6 @@ function Subasta() {
 
   function handleOnEntrySubasta(evt) {
     evt.preventDefault();
-    
     let status = true;
     let nombre = [status, producto];
     stompClient.send("/app/subasta", {}, JSON.stringify(nombre));
@@ -107,7 +103,7 @@ function Subasta() {
                       </button>
                   </div>
               ) : (
-                  <div >No se subasta</div>
+                  <div>No se subasta</div>
               )}
               {vendedor && (
                   <div >
