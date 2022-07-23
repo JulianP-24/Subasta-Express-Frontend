@@ -59,7 +59,6 @@ function Subasta() {
           let lista = response.body.split("-");
           setPrecio(lista[0]);
           setGanador(lista[1]);
-          alert("El ganador es: " + ganador);
         }
       });
     });
