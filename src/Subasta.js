@@ -44,7 +44,7 @@ function Subasta() {
    * It connects to a websocket and subscribes to a topic
    */
   function handleOnStartSubasta() {
-    var socket = new SockJS("http://localhost:8080/stompendpoint");
+    var socket = new SockJS("https://subasta-express-arsw.herokuapp.com/stompendpoint");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, (frame) => {
       console.log("Connected: " + frame);

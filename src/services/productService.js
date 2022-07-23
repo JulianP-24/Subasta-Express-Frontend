@@ -1,8 +1,8 @@
 import axios from "axios";
 import authenticationService from "./authenticationService";
 
-//const url = "https://subasta-express-arsw.herokuapp.com";
-const url = "http://localhost:8080";
+const url = "https://subasta-express-arsw.herokuapp.com";
+//const url = "http://localhost:8080";
 /* I'm trying to get the id of the user that is logged in and then save a product with that id.
  */
 class productService {
