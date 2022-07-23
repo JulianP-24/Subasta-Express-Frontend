@@ -119,7 +119,6 @@ class SignUp extends React.Component {
       )
       .then(
         () => {
-          //this.props.history.push("/");
           window.location = "/";
           alert("Registro Exitoso");
         },

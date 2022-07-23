@@ -115,7 +115,6 @@ class ViewVendedor extends React.Component {
                 <th>Nombre</th>
                 <th>Precio</th>
                 <th>Eliminar</th>
-                <th>Editar</th>
                 <th>Subastar</th>
               </tr>
             </thead>

@@ -3,8 +3,6 @@ import Stomp from "stompjs";
 import authenticationService from "./services/authenticationService";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-//"https://subasta-express-arsw.herokuapp.com
-//"http://localhost:8080
 var stompClient = null;
 /**
  * It's a function that returns a form with a button that sends a message to a websocket server.
@@ -53,7 +51,6 @@ function Subasta() {
           let lista = response.body.split(".");
           setEstado(lista[1]);
           if (response.body.includes("false")) {
-            alert(ganador);
             alert("El ganador es: " + ganador);
           }
         } else if (response.body === precio) {
@@ -62,6 +59,7 @@ function Subasta() {
           let lista = response.body.split("-");
           setPrecio(lista[0]);
           setGanador(lista[1]);
+          alert("El ganador es: " + ganador);
         }
       });
     });

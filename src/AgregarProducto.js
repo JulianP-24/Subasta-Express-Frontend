@@ -102,7 +102,7 @@ class AgregarProducto extends React.Component {
               onChange={this.handlePrecio}
             />
             <br></br>
-            <button type="submit" class="btn btn-success btn-rounded">
+            <button type="submit" className="btn btn-success btn-rounded">
               Guardar Producto
             </button>
           </form>
