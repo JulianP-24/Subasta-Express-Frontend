@@ -78,9 +78,6 @@ class ViewVendedor extends React.Component {
               </Button>
             </td>
             <td>
-              <Button className="btn btn-warning btn-rounded">Editar</Button>
-            </td>
-            <td>
               <button type="button" className="btn btn-success btn-rounded">
                 <Link
                   to={{

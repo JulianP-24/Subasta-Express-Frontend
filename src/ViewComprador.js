@@ -4,6 +4,7 @@ import compradorService from "./services/compradorService";
 import authenticationService from "./services/authenticationService";
 import { Link } from "react-router-dom";
 
+
 class viewComprador extends React.Component {
   /**
    * The constructor is a special method for creating and initializing an object created within a

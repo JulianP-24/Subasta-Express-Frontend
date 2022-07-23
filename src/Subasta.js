@@ -44,9 +44,7 @@ function Subasta() {
    * It connects to a websocket and subscribes to a topic
    */
   function handleOnStartSubasta() {
-    var socket = new SockJS(
-      "https://subasta-express-arsw.herokuapp.com/stompendpoint"
-    );
+    var socket = new SockJS("http://localhost:8080/stompendpoint");
     stompClient = Stomp.over(socket);
     stompClient.connect({}, (frame) => {
       console.log("Connected: " + frame);
@@ -55,6 +53,7 @@ function Subasta() {
           let lista = response.body.split(".");
           setEstado(lista[1]);
           if (response.body.includes("false")) {
+            alert(ganador);
             alert("El ganador es: " + ganador);
           }
         } else if (response.body === precio) {
